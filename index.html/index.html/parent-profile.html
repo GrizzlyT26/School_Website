@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parent Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="parent-profile.html">Profile</a></li>
+                <li><a href="index.html" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="parent-info">
+            <h2>Welcome, [Parent Name]!</h2>
+            <p>This is your parent profile page.</p>
+            <h3>Your Information</h3>
+            <ul>
+                <li><strong>Parent ID:</strong> [Parent ID]</li>
+                <li><strong>Email:</strong> [Email]</li>
+                <li><strong>Child’s Name:</strong> [Child’s Name]</li>
+                <li><strong>Class:</strong> [Class]</li>
+            </ul>
+            <h3>Account Settings</h3>
+            <form id="update-parent-info">
+                <label for="parent-email">Update Email:</label>
+                <input type="email" id="parent-email" name="parent-email" value="[Email]" required>
+                <button type="submit">Update</button>
+            </form>
+            <p id="update-status"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <script>
+        document.getElementById('update-parent-info').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = document.getElementById('parent-email').value;
+            // Simulate an update request
+            if (email) {
+                // Here you would typically send the data to a server
+                console.log('Updated Email:', email);
+                document.getElementById('update-status').textContent = 'Email updated successfully!';
+            } else {
+                document.getElementById('update-status').textContent = 'Please enter a valid email.';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRole');
+            window.location.href = 'index.html'; // Redirect to home page
+        }
+    </script>
+</body>
+</html>

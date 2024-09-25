@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGB Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>SGB Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="sgb-profile.html">Profile</a></li>
+                <li><a href="index.html" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="sgb-info">
+            <h2>Welcome, [SGB Member Name]!</h2>
+            <p>This is your SGB profile page.</p>
+            <h3>Your Information</h3>
+            <ul>
+                <li><strong>SGB ID:</strong> [SGB ID]</li>
+                <li><strong>Email:</strong> [Email]</li>
+                <li><strong>Role:</strong> [Role]</li>
+                <li><strong>Term:</strong> [Term]</li>
+            </ul>
+            <h3>Account Settings</h3>
+            <form id="update-sgb-info">
+                <label for="sgb-email">Update Email:</label>
+                <input type="email" id="sgb-email" name="sgb-email" value="[Email]" required>
+                <button type="submit">Update</button>
+            </form>
+            <p id="update-status"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <script>
+        document.getElementById('update-sgb-info').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const email = document.getElementById('sgb-email').value;
+            // Simulate an update request
+            if (email) {
+                // Here you would typically send the data to a server
+                console.log('Updated Email:', email);
+                document.getElementById('update-status').textContent = 'Email updated successfully!';
+            } else {
+                document.getElementById('update-status').textContent = 'Please enter a valid email.';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRole');
+            window.location.href = 'index.html'; // Redirect to home page
+        }
+    </script>
+</body>
+</html>
